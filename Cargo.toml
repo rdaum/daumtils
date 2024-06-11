@@ -1,0 +1,9 @@
+[package]
+name = "daumtils"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+yoke = "0.7"
+yoke-derive = "0.7"
+num-traits = "0.2"
