@@ -16,6 +16,7 @@ use std::fmt::{Debug, Display, Formatter};
 use std::hash::{Hash, Hasher};
 use std::ops::RangeBounds;
 use std::sync::Arc;
+use bytes::Bytes;
 use yoke::Yoke;
 
 /// A reference to a buffer, along with a reference counted reference to the backing storage it came
@@ -97,6 +98,19 @@ impl ByteSource for EmptyByteSource {
         0
     }
     fn touch(&self) {}
+}
+
+impl ByteSource for Bytes {
+    fn as_slice(&self) -> &[u8] {
+        self.as_ref()
+    }
+
+    fn len(&self) -> usize {
+        self.len()
+    }
+
+    fn touch(&self) {
+    }
 }
 
 impl SliceRef {
